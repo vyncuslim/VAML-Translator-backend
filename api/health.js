@@ -5,11 +5,12 @@ module.exports = function handler(req, res) {
   const translatorRuntimeConfigured = Boolean(process.env.VAML_RUNTIME_API_URL);
   const translatorAuthConfigured = Boolean(process.env.VAML_TRANSLATOR_ACCESS_TOKEN);
   const chatRuntimeConfigured = Boolean(process.env.VAML_CHAT_RUNTIME_API_URL);
-  const chatAuthConfigured = Boolean(process.env.VAML_CHAT_ACCESS_TOKEN);
+  const chatDedicatedAuthConfigured = Boolean(process.env.VAML_CHAT_ACCESS_TOKEN);
+  const chatAuthConfigured = Boolean(process.env.VAML_CHAT_ACCESS_TOKEN || process.env.VAML_TRANSLATOR_ACCESS_TOKEN);
 
   return res.status(200).json({
     service: 'vaml-translator-backend',
-    version: '0.2.0',
+    version: '0.2.1',
     status: 'ok',
     canonicalHost: 'api.vaml.vynalthai.com',
     runtimeConfigured: translatorRuntimeConfigured,
@@ -18,6 +19,7 @@ module.exports = function handler(req, res) {
     translatorAuthConfigured,
     chatRuntimeConfigured,
     chatAuthConfigured,
+    chatDedicatedAuthConfigured,
     endpoints: {
       translate: '/v1/translate',
       chat: '/v1/chat'
