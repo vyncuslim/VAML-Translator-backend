@@ -1,0 +1,12 @@
+{
+  "name": "vaml-translator-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Authenticated Vercel API boundary for VAML translation.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "node --check api/health.js && node --check api/v1/translate.js"
+  }
+}
