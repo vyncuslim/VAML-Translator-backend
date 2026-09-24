@@ -3,7 +3,8 @@
   "rewrites": [
     { "source": "/", "destination": "/api/health" },
     { "source": "/health", "destination": "/api/health" },
-    { "source": "/v1/translate", "destination": "/api/v1/translate" }
+    { "source": "/v1/translate", "destination": "/api/v1/translate" },
+    { "source": "/v1/chat", "destination": "/api/v1/chat" }
   ],
   "headers": [
     {
