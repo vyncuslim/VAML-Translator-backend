@@ -36,8 +36,8 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST required', requestId });
 
-  const accessToken = process.env.VAML_CHAT_ACCESS_TOKEN;
-  if (!accessToken) return res.status(503).json({ error: 'Chat access token is not configured', requestId });
+  const accessToken = process.env.VAML_CHAT_ACCESS_TOKEN || process.env.VAML_TRANSLATOR_ACCESS_TOKEN;
+  if (!accessToken) return res.status(503).json({ error: 'Chat gateway access token is not configured', requestId });
   if (!safeEqual(bearer(req), accessToken)) return res.status(401).json({ error: 'Unauthorized', requestId });
 
   const body = bodyOf(req);
